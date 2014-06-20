@@ -13,18 +13,26 @@ import twitter4j.Twitter;
 import twitter4j.TwitterFactory;
 import twitter4j.conf.ConfigurationBuilder;
 
+/**
+ * Setups a Twitter account
+ * 
+ * @author <a href="ggastald@redhat.com">George Gastaldi</a>
+ */
 public class TwitterSetupCommand
 {
    @Inject
    @Subset("twitter")
    private Configuration config;
 
-   @Command("Twitter: Setup")
+   /**
+    * Setup Twitter configuration
+    */
+   @Command(value = "Twitter: Setup", help = "Setups the required information in order to access a twitter account", categories = "Twitter")
    public void setup(
-            @Option(value = "consumerKey", label = "Consumer Key", required = true) String consumerKey,
-            @Option(value = "consumerSecret", label = "Consumer Secret", type = InputType.SECRET, required = true) String consumerSecret,
-            @Option(value = "accessToken", label = "Access Token", required = true) String accessToken,
-            @Option(value = "accessTokenSecret", label = "Access Token Secret", type = InputType.SECRET, required = true) String accessTokenSecret)
+            @Option(value = "consumerKey", label = "Consumer Key", required = true, description = "The Consumer Key required to access a twitter account") String consumerKey,
+            @Option(value = "consumerSecret", label = "Consumer Secret", type = InputType.SECRET, required = true, description = "The Consumer Secret required to access a twitter account") String consumerSecret,
+            @Option(value = "accessToken", label = "Access Token", required = true, description = "The Access Token required to access a twitter account") String accessToken,
+            @Option(value = "accessTokenSecret", label = "Access Token Secret", type = InputType.SECRET, required = true, description = "The Access Token Secret required to access a twitter account") String accessTokenSecret)
    {
       config.setProperty("consumerKey", consumerKey);
       config.setProperty("consumerSecret", consumerSecret);

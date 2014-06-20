@@ -39,7 +39,8 @@ Allows invoking Twitter commands
 +
 [source,java]
 ----
-@Inject private Twitter twiiter;
+@Inject private Twitter twitter;
+...
 twitter.updateStatus("Hello Twitter World!");
 ----
 +

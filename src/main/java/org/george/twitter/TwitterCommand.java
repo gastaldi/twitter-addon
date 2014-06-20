@@ -11,6 +11,7 @@ import javax.inject.Inject;
 
 import org.jboss.forge.addon.ui.annotation.Command;
 import org.jboss.forge.addon.ui.annotation.Option;
+import org.jboss.forge.furnace.services.Imported;
 import org.jboss.forge.furnace.util.Lists;
 import org.jboss.forge.furnace.util.Strings;
 
@@ -25,12 +26,13 @@ public class TwitterCommand
 {
 
    @Inject
-   private Twitter twitter;
+   private Imported<Twitter> twitterService;
 
    @Command(value = "Twitter: Tweet", help = "Updates the status for the configured twitter account", categories = "Twitter")
    public void updateStatus(@Option("arguments") Iterable<String> arguments) throws Exception
    {
       String message = Strings.join(Lists.toList(arguments).toArray());
+      Twitter twitter = twitterService.get();
       twitter.updateStatus(message);
    }
 }

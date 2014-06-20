@@ -11,9 +11,8 @@ import javax.inject.Inject;
 
 import org.jboss.forge.addon.ui.annotation.Command;
 import org.jboss.forge.addon.ui.annotation.Option;
-import org.jboss.forge.furnace.services.Imported;
-import org.jboss.forge.furnace.util.Lists;
-import org.jboss.forge.furnace.util.Strings;
+import org.jboss.forge.addon.ui.result.Result;
+import org.jboss.forge.addon.ui.result.Results;
 
 import twitter4j.Twitter;
 
@@ -24,15 +23,17 @@ import twitter4j.Twitter;
  */
 public class TwitterCommand
 {
-
    @Inject
-   private Imported<Twitter> twitterService;
+   private Twitter twitter;
 
    @Command(value = "Twitter: Tweet", help = "Updates the status for the configured twitter account", categories = "Twitter")
-   public void updateStatus(@Option("arguments") Iterable<String> arguments) throws Exception
+   public Result updateStatus(@Option(required = true, value = "message") String message) throws Exception
    {
-      String message = Strings.join(Lists.toList(arguments).toArray());
-      Twitter twitter = twitterService.get();
+      if (message.length() > 140)
+      {
+         return Results.fail("Message is longer than 140 characters");
+      }
       twitter.updateStatus(message);
+      return Results.success();
    }
 }

@@ -27,7 +27,7 @@ public class TwitterCommand
    private Twitter twitter;
 
    @Command(value = "Twitter: Tweet", help = "Updates the status for the configured twitter account", categories = "Twitter")
-   public Result updateStatus(@Option(required = true, value = "message") String message) throws Exception
+   public Result updateStatus(@Option(required = true, value = "message", label="Twitter Message") String message) throws Exception
    {
       if (message.length() > 140)
       {

@@ -2,13 +2,13 @@
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.george.twitter</groupId>
+  <groupId>com.github.gastaldi</groupId>
   <artifactId>twitter</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <properties>
     <maven.compiler.source>1.7</maven.compiler.source>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <version.furnace>2.6.0.Final</version.furnace>
+    <version.forge>3.7.2.Final</version.forge>
     <maven.compiler.target>1.7</maven.compiler.target>
   </properties>
   <dependencyManagement>
@@ -16,7 +16,7 @@
       <dependency>
         <groupId>org.jboss.forge</groupId>
         <artifactId>forge-bom</artifactId>
-        <version>${version.furnace}</version>
+        <version>${version.forge}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>

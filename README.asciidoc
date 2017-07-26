@@ -27,7 +27,7 @@ To use this addon, you must add it as a dependency in the *pom.xml* of your `for
 [source,xml]
 ----
 <dependency>
-   <groupId>org.george.twitter</groupId>
+   <groupId>com.github.gastaldi</groupId>
    <artifactId>twitter</artifactId>
    <classifier>forge-addon</classifier>
    <version>${version}</version>
